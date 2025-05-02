@@ -14,6 +14,7 @@
         $row = pg_fetch_assoc($res);
         if($row['total']>0){
             echo " Email already exist";
+            header('Refresh: 0; URL=http://localhost/schoolar/src/signin.html');
         }else{
             $sql = "INSERT INTO users (firstname, lastname, email, password)
             VALUES('$fname','$lname','$email','$enc_pass')";      
@@ -21,10 +22,10 @@
     $res = pg_query($conn, $sql);
 
     if($res){
-        echo "<script>alert('Use has been created. Go to login!')";
-        header('Refresh: 0; url=http://localhost/schoolar/src/signin.html');
         
-
+        echo "<script>alert('Use has been created. Go to login!')";
+        header('Refresh: 0; URL=http://localhost/schoolar/src/signin.html');
+        
     }else{
         echo "Error";
     }

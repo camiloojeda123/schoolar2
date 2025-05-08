@@ -1,10 +1,11 @@
 <?php
-session_star();
-if(!isset($_SESSION['user_id'])){
-    header('Refresh: 0; URL=http://localhost/schoolar/src/signin.html');
-}
-
+    session_start();
+    
+    if (!isset($_SESSION['user_id'])){
+        header('Refresh: 0; URL=http://localhost/schoolar/src/signin.html');
+    }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,9 +15,6 @@ if(!isset($_SESSION['user_id'])){
     <link rel="icon" type="image/png" href="src/icons/academic.png">
 </head>
 <body>
-    <a href="signin.html">Logout</a>
-
-
-    
+        <a href="signin.html">Logout</a> 
 </body>
 </html>

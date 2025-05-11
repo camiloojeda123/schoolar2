@@ -27,14 +27,18 @@
 
     $res = pg_query($conn, $sql);
 
-    if($res){
-        $row = pg_fetch_assoc($res);
-        if($row['total'] > 0){
-            //echo "Login OK";
-            $_SESSION['user_id'] = $row['id'];
-            header('Refresh: 0; URL=http://localhost/schoolar/src/home.php');
-        }else{
-            echo "Login failed";
-        }
+if ($res) {
+    $row = pg_fetch_assoc($res);
+
+    if ($row && $row['total'] > 0) {
+        $_SESSION['user_id'] = $row['id'];
+        header('Refresh: 0; URL=http://localhost/schoolar/src/home.php');
+        exit(); // buena práctica para detener la ejecución después del redirect
+    } else {
+        echo "Login failed";
     }
+} else {
+    echo "Error en la consulta: " . pg_last_error($conn);
+}
+
 ?>

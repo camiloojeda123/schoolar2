@@ -19,24 +19,29 @@ include('../config/database.php');
             <th>Status</th>
             <td>...</td>
         </tr>
-        <tr>
-            <th>Jaider</th>
-            <th>Gomez</th>
-            <th>Jaider@mail.coml</th>
-            <th>Active</th>
-            <td>
-                <img src="icons/usuario.png" width="15">
-                <img src="icons/delete.png" width="15">
-                <img src="icons/search.png" width="15">
-            </td>
-        </tr>
-
-
-
+        
         <?php
         //Here Code
-        $sql="select"
-
+        $sql="select firstname, lastname, email, case when status = true then 'Active' else 'no active' end as status
+	    from users";
+        $res = pg_query($conn, $sql);
+        if(!$res){
+            echo "Query error";
+            exit;
+        }
+        while($row = pg_fetch_ASSOC($res) ){
+            echo "<tr>";
+            echo "<td>".$row['firstname']."</td>";
+            echo "<td>".$row['lastname']."</td>";
+            echo "<td>".$row['email']."</td>";
+            echo "<td>".$row['status']."</td>";
+            echo "<td>";
+            echo "<a href=''><img src='icons/usuario.png' width='15'></a>";
+            echo "<a href=''><img src='icons/delete.png' width='15'></a>";
+            echo "<a href=''><img src='icons/search.png' width='15'></a>";
+            echo "</td>";
+            echo "</tr>";
+        }
         ?>
             
 

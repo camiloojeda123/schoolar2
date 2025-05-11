@@ -33,7 +33,7 @@ if ($res) {
     if ($row && $row['total'] > 0) {
         $_SESSION['user_id'] = $row['id'];
         header('Refresh: 0; URL=http://localhost/schoolar/src/home.php');
-        exit(); // buena práctica para detener la ejecución después del redirect
+        exit(); 
     } else {
         echo "Login failed";
     }

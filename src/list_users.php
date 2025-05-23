@@ -17,6 +17,7 @@ include('../config/database.php');
             <th>Lastname</th>
             <th>E_mail</th>
             <th>Status</th>
+            <th>Photo</th>
             <td>...</td>
         </tr>
         
@@ -35,10 +36,11 @@ include('../config/database.php');
             echo "<td>".$row['lastname']."</td>";
             echo "<td>".$row['email']."</td>";
             echo "<td>".$row['status']."</td>";
+            echo "<td align='center' ><img src='photo_users/photo_default.png' width='30'></td>";
             echo "<td>";
-            echo "<a href=''><img src='icons/usuario.png' width='15'></a>";
-            echo "<a href=''><img src='icons/delete.png' width='15'></a>";
-            echo "<a href=''><img src='icons/search.png' width='15'></a>";
+            echo "<a href=''><img src='icons/usuario.png' width='20'></a>";
+            echo "<a href='http://127.0.0.1//schoolar/src/delete.php'><img src='icons/delete.png' width='25'></a>";
+            echo "<a href=''><img src='icons/search.png' width='20'></a>";
             echo "</td>";
             echo "</tr>";
         }
